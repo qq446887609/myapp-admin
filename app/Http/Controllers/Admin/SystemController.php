@@ -13,7 +13,7 @@ class SystemController extends Controller
     {
         $data = $this->common();
 
-        return view('admin.system.index',$data);
+        return view('admin.system.index', $data);
     }
 
     //修改
@@ -21,7 +21,7 @@ class SystemController extends Controller
     {
         $data = $this->common();
 
-        return view('admin.system.edit',$data);
+        return view('admin.system.edit', $data);
     }
 
     public function common()
@@ -31,6 +31,21 @@ class SystemController extends Controller
 
         $sys = $sysModel->getSys();
 
-        return ['sys'=>$sys];
+        return ['sys' => $sys];
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+
+        $sysModel = new SystemModel();
+
+        $result = $sysModel->setSys($data);
+
+        if($result){
+            return response()->json(['code'=>1,'msg'=>'success']);
+        }else{
+            return response()->json(['code'=>0,'msg'=>'error']);
+        }
     }
 }

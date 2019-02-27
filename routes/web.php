@@ -20,7 +20,9 @@ Route::get('admin/index','Admin\IndexController@index');
 
 Route::get('admin/system','Admin\SystemController@index');//网站设置
 
-Route::any('admin/system/edit','Admin\SystemController@edit');//网站设置修改
+Route::get('admin/system/edit','Admin\SystemController@edit');//网站设置修改页面
+
+Route::post('admin/system/update','Admin\SystemController@update');//更新
 
 //网站轮播图
 Route::resource('admin/image','Admin\ImageController');
