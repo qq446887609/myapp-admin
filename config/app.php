@@ -163,6 +163,9 @@ return [
         //验证码
         Mews\Captcha\CaptchaServiceProvider::class,
 
+        //jwt
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
     ],
 
     /*
@@ -214,6 +217,10 @@ return [
 
         //验证码
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
+        // jwt
+        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
 
     ],
 

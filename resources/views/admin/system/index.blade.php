@@ -10,33 +10,7 @@
                     <label>网站标题：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="stitle" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>网站LOGO：</label>
-                </div>
-                <div class="field">
-                    <input type="text" id="url1" name="slogo" class="input tips" style="width:25%; float:left;" value="" data-toggle="hover" data-place="right" data-image=""  />
-                    <input type="button" class="button bg-blue margin-left" id="image1" value="+ 浏览上传" >
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>网站域名：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="surl" value="" />
-                </div>
-            </div>
-            <div class="form-group" style="display:none">
-                <div class="label">
-                    <label>副加标题：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="sentitle" value="" />
+                    <input readonly="true" class="input" name="title" value="{{$sys['title']}}" style="height:80px">
                     <div class="tips"></div>
                 </div>
             </div>
@@ -45,7 +19,7 @@
                     <label>网站关键字：</label>
                 </div>
                 <div class="field">
-                    <textarea class="input" name="skeywords" style="height:80px"></textarea>
+                    <input readonly="true" class="input" name="keywords" value="{{$sys['keywords']}}" style="height:80px">
                     <div class="tips"></div>
                 </div>
             </div>
@@ -54,99 +28,16 @@
                     <label>网站描述：</label>
                 </div>
                 <div class="field">
-                    <textarea class="input" name="sdescription"></textarea>
+                    <textarea readonly="true" class="input" name="desc">{{$sys['desc']}}</textarea>
                     <div class="tips"></div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>联系人：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_name" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>手机：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_phone" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>电话：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_tel" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group" style="display:none;">
-                <div class="label">
-                    <label>400电话：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_400" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>传真：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_fax" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>QQ：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_qq" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group" style="display:none">
-                <div class="label">
-                    <label>QQ群：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_qqu" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="label">
-                    <label>Email：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_email" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>地址：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="s_address" value="" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-
             <div class="form-group">
                 <div class="label">
                     <label>底部信息：</label>
                 </div>
                 <div class="field">
-                    <textarea name="scopyright" class="input" style="height:120px;"></textarea>
+                    <textarea readonly="true" name="footer" class="input" style="height:120px;">{{$sys['footer']}}</textarea>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -155,7 +46,7 @@
                     <label></label>
                 </div>
                 <div class="field">
-                    <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+                    <a href="{{url('admin/system/edit')}}"class="button bg-main icon-check-square-o">修改</a>
                 </div>
             </div>
         </form>
