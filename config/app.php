@@ -166,6 +166,9 @@ return [
         //jwt
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
+        //easy sms
+        App\Providers\EasySmsServiceProvider::class,
+
     ],
 
     /*

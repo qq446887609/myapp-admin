@@ -26,6 +26,7 @@ Route::post('admin/system/update','Admin\SystemController@update');//更新
 
 //网站轮播图
 Route::resource('admin/image','Admin\ImageController');
+Route::post('admin/image/upload','Admin\ImageController@upload');
 //留言管理
 Route::get('admin/comment','Admin\CommentController@index');
 //文章

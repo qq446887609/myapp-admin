@@ -4,7 +4,7 @@
 <div class="panel admin-panel">
     <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
     <div class="padding border-bottom">
-        <button type="button" class="button border-yellow" onclick="window.location.href='#add'"><span class="icon-plus-square-o"></span> 添加内容</button>
+        <button type="button" class="button border-yellow" onclick="window.location.href='{{url('admin/image/create')}}'"><span class="icon-plus-square-o"></span> 添加内容</button>
     </div>
     <table class="table table-hover text-center">
         <tr>
