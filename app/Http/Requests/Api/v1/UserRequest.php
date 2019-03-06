@@ -1,13 +1,10 @@
 <?php
-/**
- * api 发送短信 验证类
- */
 
 namespace App\Http\Requests\Api\v1;
 
 use Dingo\Api\Http\FormRequest;//注意这里的 FormRequest 是 DingoApi 为我们提供的基类
 
-class VerificationCodeRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,21 +27,27 @@ class VerificationCodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => [
-                'required',
-                'regex:/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\d{8}$/',
-            ]
+            'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:july_users,name',
+            'password' => 'required|string|min:6',
+            'verification_key' => 'required|string',
+            'verification_code' => 'required|string',
         ];
     }
 
     /**
-     * 重写自定义消息
+     * 自定义错误消息
      */
     public function messages()
     {
         return [
-            'phone.required'=>'手机号不能为空',
-            'phone.regex'=>'手机号格式不正确',
+            'name.required'=>'昵称不能为空',
+            'name.between' =>'昵称长度为3到25位',
+            'name.regex'   =>'昵称格式正确',
+            'user.unique'  => '昵称已经注册',
+            'password.required' => '密码不能为空',
+            'password.string'   => '密码格式不正确',
+            'verification_code' => '验证码不能为空'
         ];
     }
+
 }
