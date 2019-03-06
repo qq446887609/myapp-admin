@@ -19,12 +19,19 @@ $api->version('v1',[
    'namespace'=> 'App\Http\Controllers\Api\v1' //我们增加了一个参数 namespace，使 v1 版本的路由都会指向 App\Http\Controllers\Api
 ],function ($api){
 
-    //短信验证码
-    $api->post('verificationCodes','VerificationCodesController@store')
-        ->name('api.verificationCodes.store');
+    $api->group([
+        'middleware'=>'api.throttle',//限制api访问调用次数中间件
+        'limit' => config('api.rate_limits.sign.limit'),                //调用次数为1此
+        'expires' =>config('api.rate_limits.sign.expires')                //每分钟调用频率
+    ],function ($api){
 
-    //用户注册
-    $api->post('users','UsersController@store')
-        ->name('api.users.store');
+        //短信验证码
+        $api->post('verificationCodes','VerificationCodesController@store')
+            ->name('api.verificationCodes.store');
 
+        //用户注册
+        $api->post('users','UsersController@store')
+            ->name('api.users.store');
+
+    });
 });

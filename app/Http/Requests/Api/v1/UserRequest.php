@@ -43,7 +43,7 @@ class UserRequest extends FormRequest
             'name.required'=>'昵称不能为空',
             'name.between' =>'昵称长度为3到25位',
             'name.regex'   =>'昵称格式正确',
-            'user.unique'  => '昵称已经注册',
+            'name.unique'  => '昵称已经注册',
             'password.required' => '密码不能为空',
             'password.string'   => '密码格式不正确',
             'verification_code' => '验证码不能为空'
