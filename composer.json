@@ -14,6 +14,7 @@
         "laravel/tinker": "^1.0",
         "mews/captcha": "^2.2",
         "overtrue/easy-sms": "^1.1",
+        "socialiteproviders/weixin": "^4.0",
         "tymon/jwt-auth": "1.*@rc"
     },
     "require-dev": {
