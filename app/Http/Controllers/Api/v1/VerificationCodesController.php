@@ -13,7 +13,19 @@ class VerificationCodesController extends Controller
 {
     public function store(VerificationCodeRequest $request, EasySms $easySms)
     {
-        $phone = $request->phone;
+        $captchaData = \Cache::get($request->captcha_key);
+
+        if(!$captchaData) {
+            return $this->response->error('图片验证码已失效',422);
+        }
+
+        if(!hash_equals($captchaData['code'],$request->captcha_code)) {
+            //验证码错误,清空验证码
+            \Cache::forget($request->captcha_key);
+            return $this->response->error('验证码错误',401);
+        }
+
+        $phone = $captchaData['phone'];
 
         //生成4位随机数,左侧补0
         $code = str_pad(random_int(1,9999),4,0,STR_PAD_LEFT);
