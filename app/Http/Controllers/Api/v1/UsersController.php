@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Requests\Api\v1\UserRequest;
+use App\Transformers\UserTransformer;
 use App\User;
-use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    /**
+     * @param UserRequest $request
+     * @return \Dingo\Api\Http\Response
+     * 用户注册 待测试
+     */
     public function store(UserRequest $request)
     {
         $verifyData = \Cache::get($request->verification_key);//获得缓存的发送验证码信息
@@ -34,6 +39,21 @@ class UsersController extends Controller
         //清除验证码
         \Cache::forget($request->verification_key);
 
-        return $this->response->created();
+        return $this->response->item($user,new UserTransformer())->setMeta([
+            'access_token' => \Auth::guard('api')->formUser($user),
+            'token_type' => 'Bearer',
+            'expires_in' => \Auth::guard('api')->factory()->getTTL()*60
+         ])->setStatusCode(201);
+    }
+
+    /**
+     * @return \Dingo\Api\Http\Response
+     * 获得用户信息
+     */
+    public function me()
+    {
+        //Dingo\Api\Routing\Helpers 这个 trait 吗，它提供了 user 方法，方便我们获取到当前登录的用户，也就是 token 所对应的用户，$this->user() 等同于\Auth::guard('api')->user()。
+        //我们返回的是一个单一资源，所以使用$this->response->item，第一个参数是模型实例，第二个参数是刚刚创建的 transformer
+        return $this->response->item($this->user(),new UserTransformer());
     }
 }

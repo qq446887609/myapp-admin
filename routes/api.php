@@ -16,7 +16,9 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1',[
-   'namespace'=> 'App\Http\Controllers\Api\v1' //我们增加了一个参数 namespace，使 v1 版本的路由都会指向 App\Http\Controllers\Api
+   'namespace'=> 'App\Http\Controllers\Api\v1', //我们增加了一个参数 namespace，使 v1 版本的路由都会指向 App\Http\Controllers\Api
+    'middleware' =>'serializer:array',//考虑到前端同事们对接的方便程度，我们选择少一层嵌套的 ArraySerializer
+
 ],function ($api){
 
     $api->group([
@@ -53,5 +55,16 @@ $api->version('v1',[
         $api->delete('authorizations/current','AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
 
+        //以下为需要api 中间件验证
+        $api->group(['middleware'=>'api.auth'],function ($api){
+
+            //游客验证
+
+
+            //登录验证
+            $api->get('user','UsersController@me')
+                ->name('api.user.show');
+
+        });
     });
 });
