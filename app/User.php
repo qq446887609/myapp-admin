@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 
-class User extends  Model
+class User extends  Authenticatable  implements JWTSubject
 {
     protected $table = 'july_users';
 
@@ -16,5 +18,19 @@ class User extends  Model
     //所以，在开始之前，你应该定义好哪些模型属性是可以被批量赋值的。你可以在模型上使用 $fillable
     protected $fillable = ['name', 'phone', 'email', 'password',
         'weixin_openid', 'weixin_unionid'];
+
+    // Rest omitted for brevity
+
+    //getJWTIdentifier 返回了 User 的 id
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    //getJWTCustomClaims etJWTCustomClaims 是我们需要额外在 JWT 载荷中增加的自定义内容，这里返回空数组
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
 }
