@@ -40,7 +40,7 @@ class UsersController extends Controller
         \Cache::forget($request->verification_key);
 
         return $this->response->item($user,new UserTransformer())->setMeta([
-            'access_token' => \Auth::guard('api')->formUser($user),
+            'access_token' => \Auth::guard('api')->fromUser($user),
             'token_type' => 'Bearer',
             'expires_in' => \Auth::guard('api')->factory()->getTTL()*60
          ])->setStatusCode(201);

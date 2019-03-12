@@ -55,7 +55,7 @@ $api->version('v1',[
         $api->delete('authorizations/current','AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
 
-        //以下为需要api 中间件验证
+        //以下为需要api token 中间件验证
         $api->group(['middleware'=>'api.auth'],function ($api){
 
             //游客验证
@@ -64,6 +64,10 @@ $api->version('v1',[
             //登录验证
             $api->get('user','UsersController@me')
                 ->name('api.user.show');
+
+            //图片资源
+            $api->post('images','ImagesController@store')
+                ->name('api.images.store');
 
         });
     });

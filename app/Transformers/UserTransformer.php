@@ -1,6 +1,10 @@
 <?php
 namespace App\Transformers;
 
+/**
+ * transform 返回用户数据格式规定
+ */
+
 use App\User;
 use League\Fractal\TransformerAbstract;
 
