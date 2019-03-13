@@ -69,6 +69,14 @@ $api->version('v1',[
             $api->post('images','ImagesController@store')
                 ->name('api.images.store');
 
+            //修改个人资料接口
+            /**
+             * 注意这里使用的方法是 patch，patch 与 put 的区别为
+                put 替换某个资源，需提供完整的资源信息
+                patch 部分修改资源，提供部分资源信息
+             */
+            $api->patch('user','UsersController@update')
+                ->name('api.user.update');
         });
     });
 });

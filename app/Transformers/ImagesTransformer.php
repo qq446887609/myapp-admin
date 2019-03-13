@@ -17,7 +17,7 @@ class ImagesTransformer extends TransformerAbstract{
           'user_id' => $images->user_id,
           'type' => $images->type,
           'path' => $images->path,
-          'created_at' => $images->create_at->toDateTimeString(),
+          'created_at' => $images->created_at->toDateTimeString(),
           'updated_at' => $images->updated_at->toDateTimeString(),
         ];
     }

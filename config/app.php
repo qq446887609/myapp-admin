@@ -169,6 +169,9 @@ return [
         //easy sms
         App\Providers\EasySmsServiceProvider::class,
 
+        //图片处理
+        Intervention\Image\ImageServiceProvider::class
+
     ],
 
     /*
@@ -224,6 +227,9 @@ return [
         // jwt
         'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
         'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+
+        //图片处理
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

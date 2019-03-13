@@ -26,11 +26,35 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
+        //根据不同请求方法 设定不同规则
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:july_users,name',
+                    'password' => 'required|string|min:6',
+                    'verification_key' => 'required|string',
+                    'verification_code' => 'required|string',
+                ];
+                break;
+            case 'PATCH':
+                $userId = \Auth::guard('api')->id();
+
+                return [
+                    //验证name 唯一 但是不包括自己
+                    'name' => 'between:3,25|regex:/^[A-Za-z0-9\-\_]+$|unique:users,name,'.$userId,
+                    'email' => 'email',
+                    //验证images表中 id 是否有等于avatar_image_id值得数据 同时验证type=avatar user_id=$userId
+                    'avatar_image_id'=>'exists:images,id,type,avatar,user_id,'.$userId
+                ];
+                break;
+        }
+    }
+
+    public function attributes()
+    {
         return [
-            'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:july_users,name',
-            'password' => 'required|string|min:6',
-            'verification_key' => 'required|string',
-            'verification_code' => 'required|string',
+            'verification_key' => '短信验证码 key',
+            'verification_code' => '短信验证码',
         ];
     }
 
@@ -42,7 +66,7 @@ class UserRequest extends FormRequest
         return [
             'name.required'=>'昵称不能为空',
             'name.between' =>'昵称长度为3到25位',
-            'name.regex'   =>'昵称格式正确',
+            'name.regex'   =>'昵称格式不正确',
             'name.unique'  => '昵称已经注册',
             'password.required' => '密码不能为空',
             'password.string'   => '密码格式不正确',
