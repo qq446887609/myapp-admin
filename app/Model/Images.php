@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Images extends Model
 {
+
+    protected $table = 'july_images';
+
     protected $fillable = ['type','path'];
 
     public function user()
