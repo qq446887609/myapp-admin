@@ -56,8 +56,12 @@ $api->version('v1',[
             ->name('api.authorizations.destroy');
 
         //游客可以访问接口
+        //分类
         $api->get('category','CategoryController@index')
             ->name('api.category.index');
+        //banner
+        $api->get('banner','BannerController@index')
+            ->name('api.banner.index');
 
         //以下为需要api token 中间件验证
         $api->group(['middleware'=>'api.auth'],function ($api){
