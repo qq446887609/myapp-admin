@@ -55,13 +55,12 @@ $api->version('v1',[
         $api->delete('authorizations/current','AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
 
+        //游客可以访问接口
+        $api->get('category','CategoryController@index')
+            ->name('api.category.index');
+
         //以下为需要api token 中间件验证
         $api->group(['middleware'=>'api.auth'],function ($api){
-
-            //游客访问接口
-            $api->get('categorys','CategorysController@index')
-                ->name('api.categorys.index');
-
 
             //登录验证
             $api->get('user','UsersController@me')

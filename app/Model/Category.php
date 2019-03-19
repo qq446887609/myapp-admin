@@ -4,9 +4,11 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categorys extends Model
+class Category extends Model
 {
     protected $fillable = [
         "name","desc"
     ];
+
+    protected $table = "july_category";
 }
