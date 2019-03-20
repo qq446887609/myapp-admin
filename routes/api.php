@@ -62,6 +62,12 @@ $api->version('v1',[
         //banner
         $api->get('banner','BannerController@index')
             ->name('api.banner.index');
+        //文章列表
+        $api->get('articles','ArticlesController@index')
+            ->name('api.articles.index');
+        //文章详情
+        $api->get('articles/{id}','ArticlesController@show')
+            ->name('api.articles.show');
 
         //以下为需要api token 中间件验证
         $api->group(['middleware'=>'api.auth'],function ($api){
