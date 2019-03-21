@@ -36,3 +36,6 @@ Route::resource('admin/cate','Admin\CateController');
 
 //前端路由
 Route::get('/','Home\IndexController@index');
+
+//测试发送极光推送
+Route::get('admin/jpush','Admin\JpushController@index');

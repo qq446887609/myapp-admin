@@ -21,7 +21,7 @@ class ArticlesController extends Controller
 
         $query->orderBy("created_at","desc");
 
-        $articles = $query->paginate(60);
+        $articles = $query->paginate(6);
 
         return $this->response->paginator($articles,new ArticlesTransformer());
     }

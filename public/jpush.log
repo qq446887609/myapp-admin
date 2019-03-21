@@ -1,0 +1,2 @@
+Send POST https://api.jpush.cn/v3/push, body:{"platform":"all","audience":"all","notification":{"alert":"hello july"},"options":{"sendno":1331777517,"apns_production":false}}, times:1
+Send POST https://api.jpush.cn/v3/push, body:{"platform":"all","audience":"all","notification":{"alert":"hello july"},"options":{"sendno":1157131894,"apns_production":false}}, times:1
