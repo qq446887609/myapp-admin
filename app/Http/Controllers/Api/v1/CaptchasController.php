@@ -6,7 +6,7 @@ use App\Http\Requests\Api\v1\CaptchaRequest;
 use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Http\Request;
 
-class CaptchasController extends Controller
+class CaptchasController extends ApiBaseController
 {
     public function store(CaptchaRequest $request, CaptchaBuilder $captchaBuilder)
     {

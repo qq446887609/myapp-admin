@@ -12,7 +12,7 @@ use App\Model\Images;
 use App\Transformers\ImagesTransformer;
 use Illuminate\Http\Request;
 
-class ImagesController extends Controller
+class ImagesController extends ApiBaseController
 {
 
     /**

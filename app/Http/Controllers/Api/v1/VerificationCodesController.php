@@ -9,7 +9,7 @@ use App\Http\Requests\Api\v1\VerificationCodeRequest;
 use Illuminate\Http\Request;
 use Overtrue\EasySms\EasySms;
 
-class VerificationCodesController extends Controller
+class VerificationCodesController extends ApiBaseController
 {
     public function store(VerificationCodeRequest $request, EasySms $easySms)
     {

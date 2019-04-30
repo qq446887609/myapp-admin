@@ -6,7 +6,7 @@ use App\Model\Articles;
 use App\Transformers\ArticlesTransformer;
 use Illuminate\Http\Request;
 
-class ArticlesController extends Controller
+class ArticlesController extends ApiBaseController
 {
     /**
      * 文章列表
@@ -16,12 +16,16 @@ class ArticlesController extends Controller
      */
     public function index(Request $request,Articles $articles)
     {
+        $where = logic\Articles::getArticleListWhere($request);
+
         //构建了一个查询构造器 query()
         $query = $articles->query();
 
+        $query->where($where);
+
         $query->orderBy("created_at","desc");
 
-        $articles = $query->paginate(6);
+        $articles = $query->paginate(8);
 
         return $this->response->paginator($articles,new ArticlesTransformer());
     }

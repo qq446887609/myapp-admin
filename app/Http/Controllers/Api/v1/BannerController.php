@@ -10,7 +10,7 @@ use App\Model\ImageModel;
 use App\Transformers\BannerTransformer;
 use Illuminate\Http\Request;
 
-class BannerController extends Controller
+class BannerController extends ApiBaseController
 {
     public function index()
     {

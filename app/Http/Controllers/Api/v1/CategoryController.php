@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Model\Category;
 use App\Transformers\CategoryTransformer;
 
-class CategoryController extends Controller
+class CategoryController extends ApiBaseController
 {
     public function index()
     {

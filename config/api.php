@@ -234,12 +234,12 @@ return [
         //访问频率限制 次数/分钟
         'access'=>[
             'expires'=>env('RATE_LIMITS_EXPIRES',1),//时间
-            'limit'  =>env('RATE_ACCESS_LIMIT',60)
+            'limit'  =>env('RATE_ACCESS_LIMIT',400)
         ],
         //登录相关接口访问频率
         'sign'=>[
             'expires'=>env('RATE_SIGN_LIMITS_EXPIRES',1),//时间
-            'limit'  =>env('RATE_SIGN_LIMIT',10)
+            'limit'  =>env('RATE_SIGN_LIMIT',400)
         ]
     ]
 

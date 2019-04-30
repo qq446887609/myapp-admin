@@ -7,7 +7,7 @@ use App\Model\Images;
 use App\Transformers\UserTransformer;
 use App\User;
 
-class UsersController extends Controller
+class UsersController extends ApiBaseController
 {
     /**
      * @param UserRequest $request

@@ -7,7 +7,7 @@ use App\Http\Requests\Api\v1\SocialAuthorizationRequest;
 use App\User;
 use Illuminate\Http\Request;
 
-class AuthorizationsController extends Controller
+class AuthorizationsController extends ApiBaseController
 {
     /**
      * 第三方登录

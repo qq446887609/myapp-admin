@@ -23,7 +23,7 @@ $api->version('v1',[
 
     $api->group([
         'middleware'=>'api.throttle',//限制api访问调用次数中间件
-        'limit' => config('api.rate_limits.sign.limit'),                //调用次数为1此
+        'limit' => config('api.rate_limits.sign.limit'),                //调用次数为此
         'expires' =>config('api.rate_limits.sign.expires')                //每分钟调用频率
     ],function ($api){
 
@@ -88,6 +88,10 @@ $api->version('v1',[
              */
             $api->patch('user','UsersController@update')
                 ->name('api.user.update');
+
+            //获得个人书架api接口
+            $api->get('bookshelf',"BookController@bookshelf")
+                ->name('api.book.shelf');
         });
     });
 });
