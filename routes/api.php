@@ -92,6 +92,10 @@ $api->version('v1',[
             //获得个人书架api接口
             $api->get('bookshelf',"BookController@bookshelf")
                 ->name('api.book.shelf');
+
+            //添加书籍到书架
+            $api->get('bookadd','BookController@bookAdd')
+                ->name('api.book.add');
         });
     });
 });

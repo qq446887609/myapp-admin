@@ -4,7 +4,7 @@ namespace App\Http\Requests\Api\v1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ImagesRequest extends FormRequest
+class BookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,25 +23,19 @@ class ImagesRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            'type' => 'required|string|in:avatar,topic',
+        return [
+            "zhuishu_id"=>'required',
+            "book_name"=>'required',
+            "cover_url"=>'required'
         ];
-
-        if ($this->type == 'avatar') {
-
-            $rules['image'] = 'required|mimes:jpeg,bmp,png,gif|dimensions:min_width=200,min_height=200';
-
-        } else {
-            $rules['image'] = 'required|mimes:jpeg,bmp,png,gif';
-        }
-
-        return $rules;
     }
 
     public function messages()
     {
         return [
-            'image.dimensions' => '图片的清晰度不够，宽和高需要 200px 以上'
+            "zhuishu_id.required"=>'追书神器图书id不能为空',
+            "book_name.required"=>'书籍名称不能为空',
+            "cover_url.required"=>'图书封面图片不能为空'
         ];
     }
 }
