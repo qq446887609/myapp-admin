@@ -27,6 +27,10 @@ $api->version('v1',[
         'expires' =>config('api.rate_limits.sign.expires')                //每分钟调用频率
     ],function ($api){
 
+        //验证版本号
+        $api->get("checkVersion","SysController@checkVersion")
+            ->name('api.checkVersion');
+
         //短信验证码
         $api->post('verificationCodes','VerificationCodesController@store')
             ->name('api.verificationCodes.store');

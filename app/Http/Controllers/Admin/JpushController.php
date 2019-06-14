@@ -16,7 +16,6 @@ class JpushController extends Controller
     public function index()
     {
         try {
-
             $jpush = new JpushClient(config('jpush.appKey'),config('jpush.masterSecret'));
             $response = $jpush->push()
                 ->setPlatform('all')

@@ -50,6 +50,6 @@ class BookController extends ApiBaseController
             "msg"=>'success'
         ];
 
-        $this->response->array($resultArray)->setStatusCode(201);
+        return $this->response->array($resultArray)->setStatusCode(201);
     }
 }
